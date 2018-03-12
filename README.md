@@ -1,5 +1,5 @@
 
-##Simple Javascript exercise
+## Simple Javascript exercise
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;There are some projects written from the start of learning javascript. Some of them are referenced from others' work.
