@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Draw_tools</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            margin-top:40px;
+            margin-left:400px;
+        }
+        #tool{
+            position: absolute;
+            left: 340px;
+            top: 80px;
+        }
+        #tool div{
+            width: 50px;
+            height: 50px;
+            background: #BABABA;
+            border-radius: 2px;
+            margin-top: 10px;
+            text-align: center;
+            line-height:50px;
+            font-weight: 700;
+            box-shadow: 1px 1px 5px black ;
+            cursor: pointer;
+        }
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            float: left;
+            margin-right: 10px;
+        }
+        select{
+            height:20px;
+            border-radius: 4px;
+            box-shadow: 1px 1px 3px black;
+            border: 0;
+        }
+        ul{
+            overflow: hidden;
+        }
+        #line{
+            position: absolute;
+            height: 30px;
+            top: 15px;
+            left: 430px;
+        }
+        #round, #eraser{
+            position: absolute;
+            height: 30px;
+            top: 15px;
+            left: 430px;
+            display: none;
+        }
+        #round input{
+            width: 60px;
+            border-radius: 4px;
+            box-shadow: 1px 1px 3px  black;
+            border: 0;
+        }
+        #description{
+            position: absolute;
+            left: 1560px;
+            top: 60px;
+            width: 300px;
+            font-size: 18px;
+        }
+        #description span{
+            font-size: 24px;
+            display: block;
+            width: 100%;
+            height:40px;
+            text-align: center;
+        }
+        #footer{
+            position: absolute;
+            top: 750px;
+            left: 900px;
+        }
+        #footer a{
+            display: block;
+            width: 48px;
+            height:48px;
+            background: url("li.png") no-repeat;
+            float: left;
+        }
+        #footer span{
+            font-size: 18px;
+            line-height:48px;
+            font-weight:600;
+        }
+    </style>
+    <script src="can_tool.js"></script>
+</head>
+<body>
+<div id="line">
+    <ul>
+        <li>LineWidth:</li>
+        <li>
+            <select id="line_width">
+                <option>0.5</option>
+                <option>1.0</option>
+                <option>1.5</option>
+                <option>2.0</option>
+                <option>2.5</option>
+                <option>3.0</option>
+            </select>
+        </li>
+        <li>StrokeStyle:</li>
+        <li>
+            <select id="line_color">
+                <option>red</option>
+                <option>blue</option>
+                <option selected>black</option>
+                <option>green</option>
+                <option>yellow</option>
+            </select>
+        </li>
+    </ul>
+</div>
+
+<div id="round">
+    <ul>
+        <li>LineWidth:</li>
+        <li>
+            <select id="round_line_width">
+                <option>0.5</option>
+                <option>1.0</option>
+                <option>1.5</option>
+                <option>2.0</option>
+                <option>2.5</option>
+                <option>3.0</option>
+            </select>
+        </li>
+        <li>StrokeStyle:</li>
+        <li>
+            <select id="round_line_color">
+                <option>red</option>
+                <option>blue</option>
+                <option selected>black</option>
+                <option>green</option>
+                <option>yellow</option>
+            </select>
+        </li>
+        <li>FillStyle:</li>
+        <li>
+            <select id="round_fill">
+                <option selected>none</option>
+                <option>custom</option>
+                <option>blue</option>
+                <option>black</option>
+                <option>red</option>
+                <option>green</option>
+                <option>grey</option>
+            </select>
+        </li>
+        <li>Custom:</li>
+        <li>
+            <input type="text" id="round_fill_custom" value="#000000">
+        </li>
+        <li>(sth like "#xxxxxx")</li>
+    </ul>
+</div>
+
+<div id="eraser">
+    <ul>
+        <li>EraserRadius:</li>
+        <li>
+            <select id="eraser_radius">
+                <option selected>5</option>
+                <option>7</option>
+                <option>9</option>
+                <option>11</option>
+                <option>13</option>
+                <option>15</option>
+                <option>17</option>
+                <option>19</option>
+                <option>21</option>
+            </select>
+        </li>
+    </ul>
+</div>
+
+<div id="tool">
+    <div>Line</div>
+    <div>Round</div>
+    <div>Bezier</div>
+    <div>Eraser</div>
+    <div>Text</div>
+    <div>Edit</div>
+</div>
+<div id="description">
+    <span>Some Description</span>
+    <li>1.Edit is only useful to the last shape created on the grid. It's not possible now to revise the shape drawed long ago.</li>
+    <li>2.Line can't be moved.</li>
+    <li>3.Circle can be moved.</li>
+    <li>4.Bezier curve can be reshaped when changing the end points or control points</li>
+    <li>5.Erase may be discrete when moving fast.</li>
+    <li>6.e... Text is poor.</li>
+</div>
+<div id="footer">
+    <a href="#"></a><span>|kid_li|@2017</span>
+</div>
+<canvas width="1100" height="620" id="box"></canvas>
+</body>
+</html>

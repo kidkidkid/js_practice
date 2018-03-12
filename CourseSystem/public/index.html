@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CourseSystem</title>
+    <style>
+        @import "stylesheets/main.css";
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="box">
+        <div id="head">
+            <div>Login</div>
+            <div>Register</div>
+            <span></span>
+        </div>
+        <form action="/login" method="post" id="login">
+            <div class="input">
+                <div><input type="text" name="username" placeholder="username" autocomplete="off"></div>
+                <div><input type="text" name="password" placeholder="password" autocomplete="off"></div>
+                <div class="remember"><input type="checkbox" name="remember">Remember Me</div>
+            </div>
+            <div class="button"><input type="submit" value="Login"></div>
+        </form>
+        <form id="register">
+            <div class="input">
+                <div><input type="text" name="username" placeholder="username" autocomplete="off"></div>
+                <div><input type="text" name="password" placeholder="password" autocomplete="off"></div>
+                <div><input type="text" name="studentNo" placeholder="studentNo"></div>
+                <div class="type"><input type="radio" name="type">Student<input type="radio" name="type">Teacher</div>
+            </div>
+            <div class="button"><input type="submit" value="Register"></div>
+        </form>
+        <div id="alert"></div>
+    </div>
+    <div id="foot"><img src="img/kid.png">|kid_li</div>
+</div>
+<script src="javascript/main.js"></script>
+<script src="javascript/canvas_bg.js"></script>
+</body>
+</html>

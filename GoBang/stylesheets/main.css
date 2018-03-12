@@ -1,0 +1,32 @@
+body{
+    margin:0;
+}
+#board {
+    width: 620px;
+    height:620px;
+    border-radius: 15px;
+    background: #eddd70;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+#main {
+    width: 560px;
+    height:560px;
+    border: solid 2px black;
+    position: relative;
+    left:28px;
+    top: 28px;
+}
+#main div.block{
+    width: 38px;
+    height: 38px;
+    border: solid 1px black;
+    float: left;
+}
+#main div.chess {
+    width: 32px;
+    height:32px;
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+}

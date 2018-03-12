@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <style>
+        @import "../stylesheets/student.css";
+    </style>
+</head>
+<body>
+
+<div id="fill">
+    <div class="fill_head">Fill Out Information</div>
+    <div class="input">
+        <div><input type="text" name="actualname" placeholder="actualname" autocomplete="off"></div>
+        <div><input type="text" name="department" placeholder="department" autocomplete="off"></div>
+    </div>
+    <div class="button"><input type="submit" value="Fill Out"></div>
+    <div id="alert"></div>
+</div>
+
+<div id="wrap">
+    <ul id="nav">
+        <li>Information</li>
+        <li>Select</li>
+        <li>Own</li>
+        <li>About</li>
+        <a href="/logout">Log out</a>
+        <span></span>
+    </ul>
+    <hr>
+    <div id="information">
+        <ul class="basic"></ul>
+        <img src="../img/bro.jpg">
+    </div>
+    <div id="selectcourse"></div>
+    <div id="owncourse">
+        <ul>
+            <li>ClassNo</li>
+            <li>ClassName</li>
+            <li>TeacherName</li>
+            <li>Grade</li>
+        </ul>
+    </div>
+    <div id="about">
+        <img src="../img/saozhu.jpg">
+    </div>
+    <div id="foot"><img src="../img/kid.png">|kid_li</div>
+</div>
+<script src="../javascript/student.js"></script>
+</body>
+</html>

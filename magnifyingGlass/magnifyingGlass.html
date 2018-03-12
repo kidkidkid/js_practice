@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>magnifying Glass</title>
+</head>
+<body>
+<canvas width="800"  height="450" id="glass"></canvas>
+<script>
+    (function () {
+        var context = document.getElementById("glass").getContext("2d"),
+            image = new Image(),
+            offsetCanvas = document.createElement("canvas"),
+            offsetContext = offsetCanvas.getContext("2d"),
+            larger = 2,
+            diameter = 200,
+            magnifyingGlass,
+            img;
+
+        offsetCanvas.width = offsetCanvas.height = diameter * larger;
+
+        image.src = "zzz.png";
+        image.onload = function () {
+            context.drawImage(image, 0, 0, context.canvas.width, context.canvas.height);
+            img = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+            context.canvas.onmousemove = startMove;
+        };
+
+        function startMove(e) {
+            var event = e || window.event;
+            magnifyingGlass = {
+                x: event.clientX - context.canvas.offsetLeft,
+                y: event.clientY - context.canvas.offsetTop
+            };
+            context.putImageData(img, 0, 0);
+            context.save();
+            //一开始没有beginPath 导致之前的轨迹一直存在
+            context.beginPath();
+            context.lineWidth = 2;
+            context.strokeStyle = "black";
+            context.arc(magnifyingGlass.x, magnifyingGlass.y, diameter / 2, 0, Math.PI * 2);
+            context.stroke();
+            context.clip();
+            biggerCanvas();
+            context.restore();
+        }
+        
+        function biggerCanvas() {
+            offsetContext.drawImage( context.canvas,
+                                    magnifyingGlass.x - diameter / 2, magnifyingGlass.y - diameter / 2 ,
+                                    diameter, diameter,
+                                    0, 0,
+                                    diameter * larger, diameter * larger);
+            context.drawImage(offsetCanvas,
+                                0, 0,
+                                diameter * larger, diameter * larger,
+                                magnifyingGlass.x -diameter / 2 * larger, magnifyingGlass.y - diameter / 2 * larger,
+                                diameter * larger, diameter * larger);
+        }
+    }());
+</script>
+</body>
+</html>

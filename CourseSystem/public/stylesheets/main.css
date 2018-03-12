@@ -1,0 +1,96 @@
+body{
+    margin:0;
+    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+}
+#box{
+    width:400px;
+    height:380px;
+    border: solid 2px black;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 200px;
+    margin-bottom: 50px;
+    box-shadow: 5px 5px 2px #b7b7b7;
+    text-align: center;
+    position: relative;
+}
+#head{
+    width: 200px;
+    overflow: hidden;
+    margin:0 auto;
+    position: relative;
+}
+#head span{
+    width: 100px;
+    height: 3px;
+    display: block;
+    background: black;
+    position: absolute;
+    bottom:0;
+}
+#head div{
+    width: 100px;
+    height:40px;
+    float: left;
+    line-height: 40px;
+    font-size:26px;
+    padding:10px 0;
+}
+#login div.input, #register div.input{
+    width: 300px;
+    margin: 30px auto;
+}
+#login div.input input, #register div.input input{
+    width: 280px;
+    padding: 10px;
+    height:26px;
+    font-size:20px;
+    outline:none;
+}
+#box div.button input{
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height:50px;
+    font-size:22px;
+    border:0;
+}
+#login  div.remember{
+    text-align: left;
+    margin-top: 20px;
+}
+#login div.remember input{
+    width:20px;
+    height:20px;
+    vertical-align: middle;
+}
+#register{
+    display: none;
+}
+#register div.type{
+    margin-top:5px;
+}
+#register div.type input{
+    width:20px;
+    height:20px;
+    margin-left:40px;
+}
+#foot{
+    text-align: center;
+    font-size:20px;
+}
+#foot img{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+#alert{
+    position: absolute;
+    width: 400px;
+    color: orangered;
+    height:30px;
+    font-size:22px;
+    right: -400px;
+    top: 90px;
+}

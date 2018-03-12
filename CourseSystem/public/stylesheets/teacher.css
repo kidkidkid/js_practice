@@ -1,0 +1,258 @@
+body{
+    margin:0;
+    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+}
+ul,li{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+#wrap{
+    width:1000px;
+    margin: 40px auto;
+    display: none;
+}
+#nav{
+    overflow: hidden;
+    position: relative;
+}
+#nav li{
+    width:150px;
+    height:50px;
+    float: left;
+    line-height:50px;
+    font-size:26px;
+    text-align: center;
+}
+#nav a{
+    padding: 0 10px;
+    height:50px;
+    float: right;
+    line-height:50px;
+    font-size:18px;
+    text-align: center;
+}
+a:hover,a:link,a:visited{
+    color: #000;
+    text-decoration: none;
+}
+#nav span{
+    width:150px;
+    height:3px;
+    background: #000;
+    position: absolute;
+    bottom:0;
+    left:0;
+}
+#wrap hr{
+    margin:30px 0;
+}
+#information {
+    width: 60%;
+    overflow: hidden;
+    margin:0 auto;
+    margin-top:100px;
+}
+#information ul{
+    float: left;
+    width: 60%;
+}
+#information ul li{
+    font-size:22px;
+    margin-top:20px;:;
+}
+#information img{
+    float: right;
+    width: 140px;
+    height:180px;
+    margin-top: 40px;
+}
+#ownclass {
+    display: none;
+}
+#ownclass ul{
+    overflow: hidden;
+    width:100%;
+}
+#ownclass ul li{
+    float: left;
+    width:250px;
+    text-align: center;
+    font-size:20px;
+    margin: 12px 0;
+}
+#ownclass ul li input{
+    padding: 0;
+    border:0;
+    width:80px;
+    height:35px;
+    background: #b7b7b7;
+    border-radius: 2px;
+    font-size: 18px;
+    cursor: pointer;
+}
+#ownclass hr{
+    width:80%;
+    margin:0 auto;
+}
+#add {
+    margin-top:50px;
+    display: none;
+    position: relative;
+}
+#add div.addclass {
+    width: 300px;
+    margin: 30px auto;
+}
+#add div.addclass input {
+    width: 280px;
+    padding: 10px;
+    height:26px;
+    font-size:20px;
+    outline:none;
+}
+#add div.button input {
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height:50px;
+    font-size:22px;
+    border:0;
+}
+#add div.button {
+    text-align: center;
+}
+#add_alert{
+    position: absolute;
+    width: 400px;
+    top: 30px;
+    right: -80px;
+    font-size:22px;
+    color: orangered;
+}
+#about{
+    display: none;
+    text-align: center;
+    margin-top: 100px;
+}
+#foot{
+    margin-top: 50px;
+    text-align: center;
+    font-size:20px;
+}
+#foot img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+#fill {
+    border: solid black 2px;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 9999;
+    width: 400px;
+    left:50%;
+    margin-left: -200px;
+    margin-top: 200px;
+    text-align: center;
+    padding: 40px 0;
+    display: none;
+}
+#fill div.fill_head{
+    font-size:22px;
+    margin-bottom: 30px;
+}
+#fill div.input input{
+    width: 280px;
+    padding: 10px;
+    height:26px;
+    font-size:20px;
+    outline:none;
+}
+#fill div.button input{
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height:50px;
+    font-size:22px;
+    border:0;
+}
+#alert{
+    position: absolute;
+    width: 400px;
+    color: orangered;
+    font-size:22px;
+    right: -420px;
+    top: 130px;
+}
+#see {
+    display: none;
+    width:700px;
+    border: 2px black solid;
+    border-radius: 4px;
+    position: absolute;
+    top: 100px;
+    left:50%;
+    margin-left: -400px;
+    background: #ffffff;
+    z-index:9999;
+    max-height: 600px;
+    overflow: auto;
+}
+#see div{
+    width: 95%;
+    margin:10px auto;
+    height: 30px;
+    border-radius: 2px;
+    background: #b7b7b7;
+    overflow: hidden;
+}
+#see div span{
+    width: 26px;
+    height:26px;
+    float: right;
+    font-size:26px;
+    line-height: 26px;
+    border: solid 2px black;
+    text-align: center;
+}
+#see ul{
+    overflow: hidden;
+    margin: 10px 0;
+}
+#see ul li{
+    width: 220px;
+    text-align: center;
+    float: left;
+    font-size:20px;
+}
+#see ul li input {
+    width: 180px;
+    padding: 5px;
+    height:26px;
+    font-size:20px;
+    outline:none;
+}
+#see hr{
+    width: 90%;
+    margin: 10px auto;
+}
+#see div.sc_submit {
+    text-align: center;
+    background: #fff;
+    height:40px;
+    margin-bottom:20px;
+}
+#see div.sc_submit input {
+    padding:0;
+    width: 200px;
+    height:38px;
+    font-size:20px;
+    line-height:38px;
+    outline:none;
+}
+#see span {
+    cursor: pointer;
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>2048</title>
+	<style type="text/css">
+		body{
+			color: #776e65;
+			margin:80px 0;
+			font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+		}
+		.container{
+			width: 500px;
+			margin: 0 auto;
+		}
+		.title{
+			font-size: 80px;
+			font-weight: bold;
+			float: left;
+			margin:0;
+		}
+		.head{
+			height: 100px;
+		}
+		.score{
+			float: right;
+			position: relative;
+			width: 60px;
+			height: 60px;
+			background-color: #bbada0;
+			font-size: 16px;
+			text-align: center;
+			line-height: 30px;
+			font-weight: bold;
+			border-radius: 5px;
+			color: white;
+		}
+		.score span{
+			font-size: 20px;
+		}
+		.best{
+			color: white;
+			float: right;
+			position: relative;
+			width: 100px;
+			height: 60px;
+			background-color: #bbada0;
+			font-size: 16px;
+			text-align: center;
+			line-height: 30px;
+			font-weight: bold;
+			margin: 0 0 0 20px;
+			border-radius: 5px;
+		}
+		.best span{
+			font-size: 20px;
+		}
+		.new-game{
+			height:40px;
+		}
+		.game-intro{
+			float: left;
+			line-height: 40px;
+			font-size: 18px;
+			margin: 0;
+		}
+		.new-start{
+			float: right;
+			background-color: #8f7a66;
+			font-size: 22px;
+			text-decoration: none;
+			border-radius: 5px;
+			width:120px;
+			height: 40px;
+			text-align: center;
+			cursor:pointer;
+			color: white;
+			line-height: 40px;
+		}
+		.game-container{
+			background-color: #bbada0;
+			height: 480px;
+			margin:40px 0;
+			border-radius: 10px;
+			padding: 5px;
+		}
+		#game-over{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 490px;
+			height: 460px;
+			display: none;
+		}
+		#game-over p{
+			margin-top: 150px;
+			color: #ead5db;
+			font-size: 80px;
+			text-align: center;
+		}
+		#game-over button{
+			width: 120px;
+			height: 50px;
+			border-radius: 5px;
+			padding: 0;
+			border: 0;
+			margin-left: 180px;
+			font-size: 22px;
+			background: #e8b581; 
+			cursor: pointer;
+		}
+		.grid{
+			margin: 8px 0;
+			display: block;
+			height: 460px;
+			position: relative;
+		}
+		.over{
+			opacity: 0.5;
+		}
+		.grid-row{
+			height: 110px;
+			margin: 8px;
+		}
+		.foot{
+			text-align: center;
+			font-size: 20px;
+		}
+		.grid-cell{
+			width: 107.5px;
+			height: 107.5px;
+			margin:0 5.5px;
+			background-color: #776e65;
+			display: block;
+			float: left;
+			border-radius: 5px;
+			color: white;
+			font-size: 60px;
+			font-weight: 700;
+			line-height: 107.5px;
+			text-align: center;
+		}
+		.no2, .no4{
+			background: #eee4da;
+			color: #776e65;
+		}
+		.no8{
+			background: #f2b129;
+			color: #f9f6f2;
+		}
+		.no16{
+			background: #f59563;
+			color: #f9f6f2;
+		}
+		.no32{
+			background: #f67c5f;
+			color: #f9f6f2;
+		}
+		.no64{
+			background: #f65e3b;
+			color: #f9f6f2;
+		}
+		.no128{
+			background: #edcf72;
+			color: #f9f6f2;
+		}
+		.no256{
+			background: #edcc61;
+			color: #f9f6f2;
+		}
+		.no512{
+			background: #edc850;
+			color: #f9f6f2;
+		}
+		.no1024{
+			background: #edc53f;
+			color: #f9f6f2;
+			font-size: 30px;
+		}
+	</style>
+	<script type="text/javascript" src = "2048.js"></script>	
+</head>
+<body>
+<div class="container">
+
+	<div class="head">
+		<h1 class="title">2048</h1>
+		<div class="best">
+			<p style="margin:0;">BEST</p>
+			<span>0</span>
+		</div>
+		<div class="score">
+			<p style="margin:0;">SCORE</p>
+			<span>0</span>
+		</div>
+	</div>
+
+	<div class="new-game">
+		<p class="game-intro">Join the numbers and get to the<strong> 2048 tile!</strong></p>
+		<a class="new-start">New Game</a>
+	</div>
+
+	<div class="game-container">
+		<div class="grid">
+			<div class="grid-row">
+    	      	<div class="grid-cell"></div>
+    	      	<div class="grid-cell"></div>
+    	      	<div class="grid-cell"></div>
+    	      	<div class="grid-cell"></div>
+   	 	    </div>
+   	    		<div class="grid-row">
+       	   		<div class="grid-cell"></div>
+          		<div class="grid-cell"></div>
+          		<div class="grid-cell"></div>
+          		<div class="grid-cell"></div>
+    	    </div>
+    	    <div class="grid-row">
+        	  	<div class="grid-cell"></div>
+        	  	<div class="grid-cell"></div>
+        	  	<div class="grid-cell"></div>
+       	 	  	<div class="grid-cell"></div>
+        	</div>
+        		<div class="grid-row">
+         	 	<div class="grid-cell"></div>
+          		<div class="grid-cell"></div>
+          		<div class="grid-cell"></div>
+          		<div class="grid-cell"></div>
+        	</div>
+        	<div id="game-over">
+				<p>Game Over</p>
+				<button>Try Again</button>
+			</div>
+        </div>
+	</div>
+	<div class="foot">
+		<hr>
+		<p>kid_li&reg|Copied from Github/2048</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+    <style>
+        #board {
+            width: 400px;
+            height:600px;
+            margin: 0 auto;
+            margin-top: 150px;
+            border-left: solid 5px black;
+            border-bottom: solid 5px black;
+            border-right:solid 5px black;
+            position: relative;
+        }
+        .block {
+            width: 36px;
+            height:36px;
+            border:solid 2px black;
+            background: red;
+            position: absolute;
+        }
+        #grade {
+            position: absolute;
+            width:100px;
+            height:80px;
+            line-height:80px;
+            font-size:40px;
+            font-weight: 700;
+            right: -200px;
+            text-align: center;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="board"><div id="grade">0</div></div>
+<script src="Teris_module.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

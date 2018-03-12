@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>collision</title>
+    <script src="collision.js"></script>
+</head>
+<body>
+<canvas width="800" height="500" id="collision"></canvas>
+<script>
+    var context = document.getElementById("collision").getContext("2d"),
+        shapes = [new Polygon(), new Polygon(), new Polygon(), new Circle(400, 200, 70), new Circle(400, 400, 100)],
+        draggingShape;
+    var points = [
+        [new Point(50, 50), new Point(50, 150), new Point(150, 150), new Point(150, 50)],
+        [new Point(200, 200), new Point(140, 280), new Point(260, 280)],
+        [new Point(0, 200), new Point(50, 200), new Point(50, 170)]
+    ];
+    function initialize() {
+        points.forEach(function (point, i) {
+            point.forEach(function (pt) {
+                shapes[i].addPoint(pt.x, pt.y);
+            });
+        });
+        drawShapes();shapes[3].stroke(context);
+    }
+
+    context.canvas.onmousedown = function (e) {
+        var event = e || window.event;
+        var x = event.clientX - context.canvas.offsetLeft;
+        var y = event.clientY - context.canvas.offsetTop;
+        for(var i = 0; i < shapes.length; i++) {
+            if(shapes[i].isPointInPath(context, x, y)) {
+                draggingShape = shapes[i];
+                draggingShape.xx = x;
+                draggingShape.yy = y;
+                break;
+            }
+        }
+    };
+
+    context.canvas.onmousemove = function (e) {
+        if(draggingShape) {
+            var event = e || window.event;
+            var x = event.clientX - context.canvas.offsetLeft;
+            var y = event.clientY - context.canvas.offsetTop;
+            draggingShape.move(x - draggingShape.xx, y - draggingShape.yy);
+            context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+            drawShapes();
+            draggingShape.xx = x;
+            draggingShape.yy = y;
+            if(detectCollision()) {
+                context.save();
+                context.font = "20px arial";
+                context.fillText("CONLLISION", 50, 50);
+                context.restore();
+            }
+        }
+    };
+
+    context.canvas.onmouseup = function () {
+        draggingShape = null;
+    };
+
+    function drawShapes() {
+        shapes.forEach(function (shape) {
+            shape.stroke(context);
+            shape.fill(context);
+        })
+    }
+    
+    function detectCollision() {
+        if(draggingShape) {
+            for(var i = 0; i < shapes.length; i++) {
+                for(var j = i + 1; j < shapes.length; j++) {
+                    if (shapes[i].collidesWith(shapes[j]))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    initialize();
+
+</script>
+</body>
+</html>

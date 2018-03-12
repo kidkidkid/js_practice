@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sprite</title>
+</head>
+<body>
+<canvas width="500" height="250" id="sprite"></canvas>
+<script>
+    window.requestNextAnimation = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                var self = this,
+                    start,
+                    finish;
+                setTimeout(function () {
+                    start = +new Date();
+                    callback(start);
+                    finish = +new Date();
+                    self.timeout = 1000 / 60 - (finish - start); //如果没有内置函数 则返回一个类似的函数 保证每秒60帧的速率
+                }, self.timeout)
+            };
+    }());
+
+
+    function Sprite(name, painter, behaviors) {
+        if(name !== undefined) this.name = name;
+        if(painter !== undefined) this.painter = painter;
+        this.top = 0;
+        this.left = 0;
+        this.width = 10;
+        this.height = 10;
+        this.velocityX = 100;
+        this.velocityY = 0;
+        this.visible = true;
+        this.animating = true;
+        this.behavior = behaviors || [];
+    }
+    
+    Sprite.prototype = {
+        constructor: Sprite,
+        paint: function (context) {
+            if(this.painter !== undefined && this.visible) {
+                this.painter.paint(this, context);
+            }
+        },
+        update: function (context, time) {
+            for(var i = 0; i < this.behavior.length; i++) {
+                this.behavior[i].execute(this, context, time);
+            }
+        }
+    };
+
+    /*
+     * @param imageUrl
+     * @constructor
+     */
+    function ImagePainter(imageUrl) {
+        this.image = new Image();
+        this.image.src = imageUrl;
+    }
+    
+    ImagePainter.prototype = {
+        constructor: ImagePainter,
+        paint: function (sprite, context) {
+            if(this.image.complete) {
+                context.drawImage(this.image, sprite.left, sprite.top, sprite.width, sprite.height);
+            }
+        }
+    };
+
+    function StyleSheetPainter(cells, spritesheet) {
+        this.cells = cells || [];
+        this.cellIndex = 0;
+        this.spritesheet = spritesheet;
+    }
+
+    StyleSheetPainter.prototype = {
+        constructor: StyleSheetPainter,
+        advance: function () {
+            if(this.cellIndex === this.cells.length - 1)
+                this.cellIndex = 0;
+            else {
+                this.cellIndex++;
+            }
+        },
+        paint: function (sprite, context) {
+            var cell = this.cells[this.cellIndex];
+            context.drawImage(this.spritesheet, cell.left, cell.top, cell.width, cell.height, sprite.left, sprite.top, cell.width, cell.height);
+        }
+    };
+
+    (function () {
+        var cells = [
+            {   left: 1,
+                top: 0,
+                width: 47,
+                height: 64
+            },
+            {   left: 56,
+                top: 0,
+                width: 44,
+                height: 64
+            },
+            {   left: 108,
+                top: 0,
+                width: 39,
+                height: 64
+             },
+            {   left: 151,
+                top: 0,
+                width: 46,
+                height: 64
+            },
+            {   left: 209,
+                top: 0,
+                width: 49,
+                height: 64
+            },
+            {   left: 266,
+                top: 0,
+                width: 46,
+                height: 64
+            },
+            {   left: 321,
+                top: 0,
+                width: 42,
+                height: 64
+            },
+            {   left: 381,
+                top: 0,
+                width: 35,
+               height: 64
+            },
+            {   left: 426,
+                top: 0,
+                width: 35,
+                height: 64
+            }
+        ];
+
+        var behavior = [
+            //这个动作是runInPlace 实现的是原地的运动
+            {
+                lastAdvance: 0,
+                interval: 100,
+                execute: function (sprite, context, time) {
+                    if(time - this.lastAdvance > this.interval) {
+                        sprite.painter.advance();
+                     this.lastAdvance = time;
+                 }
+                }
+            },
+            {
+                lastMove: 0,
+                execute: function (sprite, context, time) {
+                    if(this.lastMove !== 0) {
+                        sprite.left -= sprite.velocityX * (time- this.lastMove) / 1000;
+                        if(sprite.left < 0) {
+                            sprite.left = context.canvas.width;
+                        }
+                    }
+                    this.lastMove = time;
+                }
+            }
+        ];
+
+        var context = document.getElementById("sprite").getContext("2d");
+        var spritesheet = new Image();
+        spritesheet.src = "sprite.png";
+        var sprite = new Sprite("sprite", new StyleSheetPainter(cells, spritesheet), behavior);
+        var lastTime = 0,
+            interval = 100;
+        sprite.left = 200;
+        sprite.top = 100;
+
+        spritesheet.onload = function () {
+            context.drawImage(this, 0, 0);
+        };
+
+        function animation(time) {
+            if(time - lastTime > interval) {
+                context.clearRect(0, 64, 500, 200);
+                sprite.update(context, time);
+                sprite.paint(context);
+                lastTime = time;
+            }
+            window.requestNextAnimation(animation);
+        }
+        
+        animation();
+    }());
+</script>
+</body>
+</html>
