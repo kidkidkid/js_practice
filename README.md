@@ -17,7 +17,4 @@ gluttonous snake : a nimi game;</br>
 MineSweeper : a mini game;</br>
 
 
-Happy to visit :)
-
-
 
