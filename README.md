@@ -13,7 +13,7 @@ simple_2048 : a mini game named 2048;</br>
 CourseSystem : a class system, the back end is node.js;</br>
 GoBang : a chess game;</br>
 collision : collision test in canvas(HTML5)</br>
-gluttonous snake : a nimi game;</br>
+gluttonous snake : a mimni game;</br>
 MineSweeper : a mini game;</br>
 
 
