@@ -2,7 +2,7 @@
 ## Simple Javascript exercise
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;There are some projects written from the start of learning javascript. Some of them are referenced from others' work.
+&nbsp;&nbsp;&nbsp;&nbsp;There are some projects written at the beginning of learning javascript. Some of them are referenced from others' work.
 If you start to learn javascript, you can complete these projects to enhance your understanding.
 
 
